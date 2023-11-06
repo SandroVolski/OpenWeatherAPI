@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { WeatherDetailsPage } from './weather-details.page';
+import { WeatherDetailsPage } from './WeatherDetailsPage';
 
 describe('WeatherDetailsPage', () => {
   let component: WeatherDetailsPage;

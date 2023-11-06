@@ -32,7 +32,9 @@
       </ion-row>
 
       <p>Umidade: {{ result.main.humidity }}%</p>
+      <p>Id: {{ result.id }} </p>
 
+      <ion-button [routerLink]="['/', 'weather-details', result.id]">Obter Detalhes</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

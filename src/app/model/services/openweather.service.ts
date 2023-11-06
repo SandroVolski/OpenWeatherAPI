@@ -14,7 +14,7 @@ export enum SearchType {
 
 export class OpenWeatherService {
   url = 'https://api.openweathermap.org/data/2.5/weather?';
-  apiKey = 'cebcd482eda57fa9a6714c1c2ba91885';
+  apiKey = 'afe5436942f7a34ee956d153e9cd7520';
 
   constructor(private http : HttpClient) {}
 
@@ -29,6 +29,6 @@ export class OpenWeatherService {
   }
 
   getById(id: any){
-    return this.http.get(`${this.url}id=${encodeURI(id)}}&appid=${this.apiKey}&lang=pt_br&units=metric`);
+    return this.http.get(`${this.url}id=${encodeURI(id)}&appid=${this.apiKey}&lang=pt_br&units=metric`);
   }
 }

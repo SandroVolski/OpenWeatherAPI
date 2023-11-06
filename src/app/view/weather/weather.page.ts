@@ -12,19 +12,33 @@ export class WeatherPage implements OnInit {
   result: any = null;
   searchTerms : string = '';
   type : SearchType = SearchType.all;
-  apiKey = 'cebcd482eda57fa9a6714c1c2ba91885';
+  apiKey = 'afe5436942f7a34ee956d153e9cd7520';
+  coordinates: { latitude: string, longitude: string } = { latitude: '', longitude: '' };
 
   constructor(private openweather : OpenWeatherService) { }
 
   search() {
     this.openweather.getAllWeatherData(this.searchTerms)
-      .subscribe(data => {
-        console.log('Dados da API OpenWeather:', data); // Adicione esta linha
-        this.result = data;
-      });
+    .subscribe(data => {
+      console.log('Dados da API OpenWeather:', data);
+      this.result = data;
+      // Armazena as coordenadas
+      this.coordinates.latitude = data.coord.lat;
+      this.coordinates.longitude = data.coord.lon;
+    });
   }
 
   ngOnInit() {
+  }
+
+  getCord() {
+    if (this.coordinates.latitude && this.coordinates.longitude) {
+      const CordBaseUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=';
+      const cordUrl = `${CordBaseUrl}${this.coordinates.latitude}&lon=${this.coordinates.longitude}&appid=${this.apiKey}`;
+      console.log('Coordenadas:', cordUrl);
+      
+    }
+    return ''; // Retorna vazio se as coordenadas não estiverem disponíveis
   }
 
   getWeatherIcon(iconCode: string): string {
@@ -32,13 +46,4 @@ export class WeatherPage implements OnInit {
     const iconUrl = `${iconBaseUrl}${iconCode}.png`;
     return iconUrl;
   }
-
-  getCord(cordLatitude: string, cordLongitude : string) {
-    const CordBaseUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=';
-    const cordUrl = `${CordBaseUrl}${cordLatitude}&lon=${cordLongitude}&appid={this.apiKey}`;
-    console.log('Coordenadas:', cordUrl); // Adicione esta linha
-    return cordUrl;
-  }
-
-
 }
