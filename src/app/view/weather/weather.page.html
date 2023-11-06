@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Previsão do Tempo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="search()">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-background">
+  <ion-item>
+    <ion-input [(ngModel)]="searchTerms" placeholder="Digite o nome da cidade"></ion-input>
+    <ion-button fill="clear" (click)="search()">
+      <ion-icon name="search" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-card *ngIf="result">
+    <ion-card-content>
+      <p>Tempo em {{ result.name }}</p>
+      <p>{{ result.main.temp | number: '1.0-0' }}°C</p>
+
+      <ion-row class="caixa-menor">
+        <ion-col size="auto">
+          <ion-img [src]="getWeatherIcon(result.weather[0].icon)" alt="Condição do Tempo"></ion-img>
+        </ion-col>
+        <ion-col>
+          <p >{{ result.weather[0].description }}</p>
+        </ion-col>
+      </ion-row>
+
+      <p>Umidade: {{ result.main.humidity }}%</p>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
