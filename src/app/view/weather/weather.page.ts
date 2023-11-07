@@ -31,16 +31,6 @@ export class WeatherPage implements OnInit {
   ngOnInit() {
   }
 
-  getCord() {
-    if (this.coordinates.latitude && this.coordinates.longitude) {
-      const CordBaseUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=';
-      const cordUrl = `${CordBaseUrl}${this.coordinates.latitude}&lon=${this.coordinates.longitude}&appid=${this.apiKey}`;
-      console.log('Coordenadas:', cordUrl);
-      
-    }
-    return ''; // Retorna vazio se as coordenadas não estiverem disponíveis
-  }
-
   getWeatherIcon(iconCode: string): string {
     const iconBaseUrl = 'https://openweathermap.org/img/wn/';
     const iconUrl = `${iconBaseUrl}${iconCode}.png`;

@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./view/weather/weather.module').then( m => m.WeatherPageModule)
   },
   {
-    path: 'weather-details/:id',
+    path: 'weather-details/:latitude/:longitude',
     loadChildren: () => import('./view/weather-details/weather-details.module').then( m => m.WeatherDetailsPageModule)
   },
 ];
