@@ -1,40 +1,45 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Previsão do Tempo</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="search()">
-        <ion-icon name="search"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+  <ion-toolbar class="page-cima">
+    <ion-title>PREVISÃO DO TEMPO</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="page-background">
-  <ion-item>
-    <ion-input [(ngModel)]="searchTerms" placeholder="Digite o nome da cidade"></ion-input>
-    <ion-button fill="clear" (click)="search()">
-      <ion-icon name="search" slot="icon-only"></ion-icon>
+  <ion-item class="custom-search">
+    <ion-input [(ngModel)]="searchTerms" placeholder="Digite o nome da cidade" class="custom-input"></ion-input>
+    <ion-button fill="clear" (click)="search()" class="custom-button">
+      <ion-icon name="search" slot="icon-only" class="custom-icon"></ion-icon>
     </ion-button>
-  </ion-item> 
-  <ion-card *ngIf="result">
-    <ion-card-content>
-      <p>Tempo em {{ result.name }}</p>
-      <p>{{ result.main.temp | number: '1.0-0' }}°C</p>
-
-      <ion-row class="caixa-menor">
+  </ion-item>
+  <div class="card" *ngIf="result">
+    <!-- <div class="card" *ngIf="result" [style.background-image]="getBackgroundImage()"> -->
+    <div class="centered-content">
+      <h1 class="ion-text-center custom-header">{{ result.name | uppercase }}, {{ result.sys.country }}</h1>
+      <ion-row class="caixa-menor" class="ion-align-items-center ion-justify-content-center">
         <ion-col size="auto">
-          <ion-img [src]="getWeatherIcon(result.weather[0].icon)" alt="Condição do Tempo"></ion-img>
-        </ion-col>
-        <ion-col>
-          <p >{{ result.weather[0].description }}</p>
+          <ion-img [src]="getWeatherIcon(result.weather[0].icon)" alt="Condição do Tempo" class="img-maior"></ion-img>
         </ion-col>
       </ion-row>
-
-      <p>Umidade: {{ result.main.humidity }}%</p>
-      <p>Id: {{ result.id }} </p>
-
-
-      <ion-button [routerLink]="['/', 'weather-details', result.coord.lat, result.coord.lon]">Obter Detalhes</ion-button>
-    </ion-card-content>
-  </ion-card>
+      <div class="current-temp">{{ result.main.temp | number: '1.0-0' }}°C</div>
+      <div class="weather-desc">{{ result.weather[0].description | uppercase }}</div>
+    </div>
+    
+    <div class="weather-stats">
+      <div class="weather-stat">
+        <i class="fas fa-tint"></i>
+        <span>{{ result.main.humidity }}</span>
+      </div>
+      <div class="weather-stat">
+        <i class="fas fa-wind"></i>
+        <span>{{ result.wind.speed }}</span>
+      </div>
+      <div class="weather-stat">
+        <i class="fas fa-water"></i>
+        <span>{{ result.main.sea_level }}</span>
+      </div>
+    </div>
+    <div class="location" class="center-container">
+      <ion-button [routerLink]="['/', 'weather-details', result.coord.lat, result.coord.lon]" class="custom-button">Obter Detalhes</ion-button>
+    </div>
+  </div>
 </ion-content>
