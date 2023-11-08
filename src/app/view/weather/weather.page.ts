@@ -41,14 +41,15 @@ export class WeatherPage implements OnInit {
     const icon = this.result.weather[0].icon;
     console.log('Dados getBackground:', icon);
     if (icon === '01d' || icon === '01n' || icon === '02d' || icon === '02n') {
-      return 'url("../weather/Fundo10.jpg")';
+      return 'background-image-sunny';
     } else if (icon === '09d' || icon === '09n' || icon === '10d' || icon === '10n' || icon === '11d' || icon === '11n') {
-      return 'url("../weather/Chuva10.jpg")';
+      return 'background-image-rainy';
     } else if (icon === '03d' || icon === '03n' || icon === '04d' || icon === '04n') {
-      return 'url("../weather/Nublado10.jpg")';
+      return 'background-image-cloudy';
     } else if (icon == '13d' || icon === '13n' || icon === '50d' || icon === '50n') {
-      return 'url("../weather/Neve10.jpg")';
+      return 'background-image-snowy';
     }
-    return 'url("../weather/Wallpaper3.jpg")';
+    return 'default-background'; // Defina uma classe padrão se nenhum caso corresponder
   }
+  
 }

@@ -43,7 +43,7 @@
     margin-right: 5px;
   }
   
-  .location {
+  .locatc {
     margin-top: 20px;
   }
   
@@ -151,3 +151,19 @@
   border: 3px solid #f8b421;
   background-image: url('../weather/' + getBackgroundImage());
 }*/
+
+.background-image-sunny {
+  background-image: url("../weather/Fundo10.jpg");
+}
+
+.background-image-rainy {
+  background-image: url("../weather/Chuva10.jpg");
+}
+
+.background-image-cloudy {
+  background-image: url("../weather/Nublado10.jpg");
+}
+
+.background-image-snowy {
+  background-image: url("../weather/Neve10.jpg");
+}

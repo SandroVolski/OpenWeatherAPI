@@ -11,7 +11,7 @@
       <ion-icon name="search" slot="icon-only" class="custom-icon"></ion-icon>
     </ion-button>
   </ion-item>
-  <div class="card" *ngIf="result">
+  <div *ngIf="result" class="page-background" [ngClass]="getBackgroundImage()" class="card" >
     <!-- <div class="card" *ngIf="result" [style.background-image]="getBackgroundImage()"> -->
     <div class="centered-content">
       <h1 class="ion-text-center custom-header">{{ result.name | uppercase }}, {{ result.sys.country }}</h1>
