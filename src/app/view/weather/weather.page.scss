@@ -9,7 +9,7 @@
   border-radius: 10px;
   border: 3px solid #f8b421;
 }
-  
+
   .current-temp {
     font-size: 50px;
     font-weight: bold;
@@ -73,7 +73,7 @@
   }
 
   .page-background {
-    --background: url('../weather/Wallpaper3.jpg') center center/cover no-repeat; 
+    --background: url('../weather/Wallpaper3.jpg') center top/cover no-repeat; 
   }
 
   .page-cima {
@@ -166,4 +166,24 @@
 
 .background-image-snowy {
   background-image: url("../weather/Neve10.jpg");
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 40px;
+  width: 40px;
+  background: url('../weather/logoApi.png') no-repeat;
+  background-size: cover;
+  border: none !important;; 
+}
+
+ion-toolbar.page-cima {
+  --background: transparent; /* Altera a cor de fundo para transparente */
+  --border-color: transparent; /* Define a cor da borda como transparente (opcional, dependendo do seu caso) */
+}
+
+ion-img.logo {
+  border: none; /* Remove a borda da logo */
 }

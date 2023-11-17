@@ -1,12 +1,14 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="page-cima" no-border>
+    
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/weather" text="" color="dark"></ion-back-button>
     </ion-buttons>
-    <ion-title>DETALHES</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
+<div class="espaco-transparente"></div>
 <ion-content [fullscreen]="true" class="custom-background">
   <ion-card-header class="card-header ion-text-center white-text">
     <ion-card-title class="ion-text-center custom-header white-text">{{ (info?.list[0].main.temp - 273.15) | number: '1.0-0' }}°C</ion-card-title>
@@ -23,24 +25,31 @@
       </ion-row>
   </ion-card-content>
 
-   <ion-card class="weather-forecast">
-    <ion-list>
-      <ion-item *ngFor="let forecast of info?.list">
-        <ion-img [src]="getWeatherIcon(forecast?.weather[0]?.icon)" slot="start"></ion-img>
-        <ion-label>
-          <ion-col class="hora-col">
-            <p class="max-dia">{{ forecast?.dt_txt | date: 'dd/MM/yyyy' }}</p>
-            <p class="min-hora">{{ forecast?.dt_txt | date: 'HH:mm' }}</p>
-          </ion-col>          
-          <p style="font-weight: bold;">{{ forecast?.main?.temp - 273.15| number: '1.0-0' }}°C</p>
-          <p>{{ forecast?.weather[0]?.description }}</p>
-          <p>Umidade: {{ forecast?.main?.humidity }}%</p>
-          <p>Nível do mar: {{ forecast?.main?.sea_level }}m</p>
-          <p>Temperatura máxima: {{ (forecast?.main?.temp_max - 273.15) | number: '1.0-0' }}°C</p>
-          <p>Temperatura mínima: {{ (forecast?.main?.temp_min - 273.15) | number: '1.0-0' }}°C</p>
-          <p>Velocidade do vento: {{ forecast?.wind?.speed }} m/s</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+  <!--<div class="espaco-transparente"></div> -->
+
+  <swiper-container class="custom-swiper-container" navigation="true">
+    <swiper-slide *ngFor="let forecast of info?.list">
+      <ion-card class="weather-forecast">
+        <ion-list>
+          <ion-item>
+            <ion-img [src]="getWeatherIcon(forecast?.weather[0]?.icon)" slot="start"></ion-img>
+            <ion-label>
+              <ion-col class="hora-col">
+                <p class="max-dia">{{ forecast?.dt_txt | date: 'dd/MM/yyyy' }}</p>
+                <p class="min-hora">{{ forecast?.dt_txt | date: 'HH:mm' }}</p>
+              </ion-col>
+              <p style="font-weight: bold;">{{ forecast?.main?.temp - 273.15| number: '1.0-0' }}°C</p>
+              <p>{{ forecast?.weather[0]?.description }}</p>
+              <p>Umidade: {{ forecast?.main?.humidity }}%</p>
+              <p>Nível do mar: {{ forecast?.main?.sea_level }}m</p>
+              <p>Temperatura máxima: {{ (forecast?.main?.temp_max - 273.15) | number: '1.0-0' }}°C</p>
+              <p>Temperatura mínima: {{ (forecast?.main?.temp_min - 273.15) | number: '1.0-0' }}°C</p>
+              <p>Velocidade do vento: {{ forecast?.wind?.speed }} m/s</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </swiper-slide>
+  </swiper-container>
+  
 </ion-content>

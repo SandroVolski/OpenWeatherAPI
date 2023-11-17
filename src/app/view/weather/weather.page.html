@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar class="page-cima">
+  <ion-toolbar class="page-cima" no-border>
+    <ion-img class="logo"></ion-img>
     <ion-title>PREVISÃO DO TEMPO</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content class="page-background">
+<ion-content class="page-background" fullscreen>
   <ion-item class="custom-search">
     <ion-input [(ngModel)]="searchTerms" placeholder="Digite o nome da cidade" class="custom-input"></ion-input>
     <ion-button fill="clear" (click)="search()" class="custom-button">

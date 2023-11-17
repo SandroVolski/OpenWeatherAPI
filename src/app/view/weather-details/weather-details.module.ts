@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { WeatherDetailsPageRoutingModule } from './weather-details-routing.module';
 
 import { WeatherDetailsPage } from './weather-details.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { WeatherDetailsPage } from './weather-details.page';
     IonicModule,
     WeatherDetailsPageRoutingModule
   ],
-  declarations: [WeatherDetailsPage]
+  declarations: [WeatherDetailsPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class WeatherDetailsPageModule {}
